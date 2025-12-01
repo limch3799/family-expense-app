@@ -1,0 +1,7 @@
+
+# 모니터링 데이터 디렉토리
+redis-data/
+d105-logs/
+grafana-data/
+prometheus-data/
+.env

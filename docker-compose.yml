@@ -1,0 +1,88 @@
+services:
+  redis:
+    image: redis:7.2.4-alpine
+    container_name: d105_redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ./redis-data:/data
+    networks:
+      - d105-net
+
+  d105-app:
+    build:
+      context: ./backend/d105
+      dockerfile: Dockerfile
+    container_name: d105-app
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./d105-logs:/logs
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://j13d105.p.ssafy.io:5432/d105_db
+      - SPRING_DATASOURCE_USERNAME=d105user
+      - SPRING_DATASOURCE_PASSWORD=xmrghkd105!!
+      - SPRING_DATA_REDIS_HOST=d105_redis
+      - SPRING_DATA_REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - d105-net
+  d105-frontend:
+    build:
+      context: ./frontend/react/D105
+      dockerfile: Dockerfile
+    container_name: d105-frontend
+    ports:
+      - "3001:3000"  
+    depends_on:
+      - d105-app
+    networks:
+      - d105-net
+    environment:
+      - VITE_API_URL=http://j13d105.p.ssafy.io:8081  
+      - REACT_APP_API_URL=http://j13d105.p.ssafy.io:8081  
+
+  loki:
+    image: grafana/loki:2.9.4
+    container_name: loki
+    ports:
+      - "127.0.0.1:3100:3100"
+    command: ["-config.file=/etc/loki/local-config.yaml"]
+    networks:
+      - d105-net
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    user: "0"
+    depends_on:
+      - loki
+    networks:
+      - d105-net
+
+  promtail:
+    image: grafana/promtail:2.9.4
+    container_name: promtail
+    volumes:
+      - /var/jenkins_home/workspace/d105/promtail-config.yml:/tmp/promtail-config.yml:ro
+      - /var/jenkins_home/workspace/d105/d105-logs:/logs:ro
+    command: ["-config.file=/tmp/promtail-config.yml"]
+    depends_on:
+      - d105-app
+      - loki
+    networks:
+      - d105-net
+
+networks:
+  d105-net:
+    driver: bridge
+
+volumes:
+  grafana-data:

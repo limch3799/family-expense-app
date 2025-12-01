@@ -1,0 +1,58 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+
+aes:
+  key: ${AES_KEY}
+  iv: ${AES_IV}
+
+ssafy:
+  api:
+    base-url: ${SSAFY_API_BASE_URL}
+    api-key: ${SSAFY_API_KEY}
+    timeout: ${SSAFY_API_TIMEOUT}
+    max-retry: ${SSAFY_API_MAX_RETRY}
+
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: ${OPENAI_BASE_URL}
+      chat:
+        options:
+          model: ${OPENAI_MODEL}
+          temperature: ${OPENAI_TEMPERATURE}
+          max-tokens: ${OPENAI_MAX_TOKENS}
+          top-p: 1.0
+          frequency-penalty: 0.0
+          presence-penalty: 0.0
+      retry:
+        max-attempts: ${OPENAI_RETRY_MAX_ATTEMPTS}
+        backoff:
+          initial-interval: 2s
+          multiplier: 5
+          max-interval: 3m
+      timeout: ${OPENAI_TIMEOUT}
+
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+coolsms:
+  api:
+    key: ${COOLSMS_API_KEY}
+    secret: ${COOLSMS_API_SECRET}
+  sms:
+    sender-phone: ${COOLSMS_SENDER_PHONE}

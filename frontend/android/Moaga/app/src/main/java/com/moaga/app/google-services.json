@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "776953935216",
+    "project_id": "d105-ddbfb",
+    "storage_bucket": "d105-ddbfb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776953935216:android:9b86fc00d0247302750bb5",
+        "android_client_info": {
+          "package_name": "com.moaga.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKjvE9RJz7HXlL1PCxHk4v6dU3wC1ZuXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
