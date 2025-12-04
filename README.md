@@ -1,4 +1,4 @@
- ![서비스로고고](./readme/serviceLogo.png)
+![서비스로고고](./readme/serviceLogo.png)
 
 ## **💰 moaga: 가족 지출 공유 분석 프로젝트**
 
@@ -113,33 +113,8 @@
 | **Infra** | Docker, Docker Compose, Jenkins, Nginx, Grafana, Loki, Promtail |
 
 
-## 📂 프로젝트 구조
-
-```
-S13P21D105/
-├── backend/           # Spring Boot 백엔드 API 서버
-│   └── d105/          # 메인 애플리케이션
-│       ├── domain/    # 도메인별 비즈니스 로직
-│       │   ├── account/      # 계좌 & 카드 관리
-│       │   ├── analysis/     # 그룹 지출 분석
-│       │   ├── group/        # 그룹 관리 & 저축 플래너
-│       │   ├── report/       # AI 리포트
-│       │   ├── tracking/     # 계좌-그룹 연결
-│       │   ├── transaction/  # 거래 내역 동기화
-│       │   └── user/         # 인증 & 알림
-│       ├── read/      # 역정규화 읽기 모델 (비동기)
-│       ├── security/  # JWT, 암호화, 인증
-│       ├── ssafy/     # SSAFY API 통합
-│       └── common/    # 공통 유틸리티
-├── frontend/          # React 프론트엔드 애플리케이션
-│   └── react/D105/
-├── exec/              # SQL 덤프 및 프로젝트 문서
-├── readme/            # Readme 폴더
-├── .env               # 전체 서비스 환경변수
-├── d105_ddl.sql       # 데이터베이스 스키마
-├── docker-compose.yml # 서비스 실행을 위한 Docker Compose 설정
-└── README.md          # 프로젝트 소개
-```
+## 🎨 와이어프레임
+![와이어프레임](./readme/wireframe-moaga.png)
 
 ## 🚀 시작하기
 - 자세한 사항은 `exec/포팅 매뉴얼.pdf` 참고
@@ -169,4 +144,3 @@ S13P21D105/
     -   **Frontend**: `http://localhost:5173`
     -   **Backend API**: `http://localhost:8080/swagger-ui/index.html`
     -   **Grafana**: `http://localhost:3000`
-
