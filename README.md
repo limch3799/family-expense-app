@@ -114,7 +114,7 @@
 
 
 ## 🎨 와이어프레임
-![와이어프레임](./readme/wireframe-moaga.png)
+![와이어프레임](./readme/wireframe_moaga.png)
 
 ## 🚀 시작하기
 - 자세한 사항은 `exec/포팅 매뉴얼.pdf` 참고
